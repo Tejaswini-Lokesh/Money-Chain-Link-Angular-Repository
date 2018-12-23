@@ -1,0 +1,99 @@
+body{
+    background-color:#30336B;
+    overflow-x:hidden;
+    overflow-y: scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: #30336B;
+    border-spacing: 5px;
+}
+.form-group{
+    width: max-content;
+}
+#formStyle {
+    border: 0px solid !important;
+    padding: 60px 50px !important;
+    margin-top: 5vh !important;
+    box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75) !important;
+}
+footer{
+    width:max-content;
+    margin-right: auto;
+    margin-left: auto;
+    color:#30336B;
+    padding-top: inherit;
+}
+.create{
+    font-size: 18px;
+    text-decoration: none;
+    color:#30336B;
+    font-weight: 700;
+}
+input::placeholder{
+    padding-left: 30px;
+}
+#emailRegIcon{
+    background-image:url(Images/email.png); 
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#userRegIcon{
+    background-image:url(Images/user.png); 
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#moblieRegIcon{
+    background-image:url(Images/mobile.png); 
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#passwordRegIcon{
+    background-image: url(Images/password.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#refRegIcon{
+    background-image: url('Images/refId.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.register{
+    background-color:#30336B !important;
+    width: 215px;
+    border-radius: 10px;
+}
+#divRegister{
+    margin-top:10vh;
+    background-color: white;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width:500px;
+}
+.row{
+    height: auto;
+}
+
+@media screen and (min-width:200px) and (max-width:720px)
+{
+    #divRegister{
+        width:fit-content;
+    }
+}
+@media screen and (min-width:200px) and (max-width:720px)
+{
+    footer{
+        width:-webkit-fill-available;
+    }
+}
+
+
+
+
