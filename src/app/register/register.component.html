@@ -12,32 +12,58 @@
 </head>
 <body> 
 <div id="divRegister">
-        <div class="container-fluid bg" id="formStyle">
+        <div class="container-fluid bg" id="formStyle" >
             <div class="row">
                 <!-- <div class="col-md-4 col-sm-4 col-xs-12"></div> -->
                 <div class="col-md-12 col-sm-4 col-xs-12" style="left:20%">
                     <!-- Form Start Here -->
-                    <form class="form-container">
+                    <form class="form-container" id="frmRegister" [formGroup]="registerForm" (ngSubmit)="onRegister()">
                         <label style="font-size: 18px;
                         color:#30336B;
                         font-weight: 700;">Be a part of Biggest Chain !!</label>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="userRegIcon" name="EmailId" placeholder="Name">
+                        <div class="form-group" [ngClass]="{'has-error': registerForm.get('regName').errors && (registerForm.get('regName').touched || (registerForm.get('regName').dirty))}">
+                            <input type="text" style="text-indent:25px;" formControlName="regName"
+                             class="form-control" id="userRegIcon" name="User" placeholder="Name" > 
+                             <span class="help-block" style="color: red; " *ngIf="registerForm.get('regName').errors && (registerForm.get('regName').touched || (registerForm.get('regName').dirty))">
+                                <span *ngIf="registerForm.get('regName').errors.required">
+                                    Name Is Required!
+                                </span>
+                            </span>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="moblieRegIcon" name="EmailId" placeholder="Mobile Number">
+                        <div class="form-group" [ngClass]="{'has-error': registerForm.get('regMobileNo').errors && (registerForm.get('regMobileNo').touched || (registerForm.get('regMobileNo').dirty))}">
+                            <input type="text" style="text-indent:25px;" class="form-control" id="moblieRegIcon" name="MobileNo" placeholder="Mobile Number" formControlName="regMobileNo">
+                            <span class="help-block" style="color: red; " *ngIf="registerForm.get('regMobileNo').errors && (registerForm.get('regMobileNo').touched || (registerForm.get('regMobileNo').dirty))">
+                                <span *ngIf="registerForm.get('regMobileNo').errors.required">
+                                    Mobile Number Is Required!
+                                </span>
+                            </span>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="emailRegIcon" name="EmailId" placeholder="Email Id">
+                        <div class="form-group" [ngClass]="{'has-error': registerForm.get('regEmail').errors && (registerForm.get('regEmail').touched || (registerForm.get('regEmail').dirty))}">
+                            <input type="text" style="text-indent:25px;" class="form-control" id="emailRegIcon" name="EmailId" placeholder="Email Id" formControlName="regEmail">
+                            <span class="help-block" style="color: red; " *ngIf="registerForm.get('regEmail').errors && (registerForm.get('regEmail').touched || (registerForm.get('regEmail').dirty))">
+                                <span *ngIf="registerForm.get('regEmail').errors.required">
+                                    Email Is Required!
+                                </span>
+                            </span>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="refRegIcon" name="EmailId" placeholder="Reference Id">
+                        <div class="form-group" [ngClass]="{'has-error': registerForm.get('regRefId').errors && (registerForm.get('regRefId').touched || (registerForm.get('regRefId').dirty))}">
+                            <input type="text" style="text-indent:25px;" class="form-control" id="refRegIcon" name="RefId" placeholder="Reference Id" formControlName="regRefId">
+                            <span class="help-block" style="color: red; " *ngIf="registerForm.get('regRefId').errors && (registerForm.get('regRefId').touched || (registerForm.get('regRefId').dirty))">
+                                <span *ngIf="registerForm.get('regRefId').errors.required">
+                                    Reference Id Is Required!
+                                </span>
+                            </span>
                         </div>
-                        <div class="form-group">
-                                <input type="password" class="form-control" id="passwordRegIcon" placeholder="Password">
+                        <div class="form-group" [ngClass]="{'has-error': registerForm.get('regPassword').errors && (registerForm.get('regPassword').touched || (registerForm.get('regPassword').dirty))}">
+                            <input type="password" style="text-indent:25px;" class="form-control" id="passwordRegIcon" name="Password" placeholder="Password" formControlName="regPassword">
+                            <span class="help-block" style="color: red; " *ngIf="registerForm.get('regPassword').errors && (registerForm.get('regPassword').touched || (registerForm.get('regPassword').dirty))">
+                                <span *ngIf="registerForm.get('regPassword').errors.required">
+                                    Password Is Required!
+                                </span>
+                            </span>
                         </div>
                         <div class="form-group">  
-                            <button type="button" class="btn btn-primary register">Register</button>  
+                            <button type="button" class="btn btn-primary register" (click)="btnRegister();">Register</button>  
                         </div>
                         <button type="button" class="btn btn-link create" (click)="login()">Already Registered? Log In Here</button>
                     </form>
