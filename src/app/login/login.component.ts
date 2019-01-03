@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute} from '@angular/router';
-import { FormGroup,FormControl,FormBuilder,Validator, Validators} from '@angular/forms';
+import { FormGroup,FormBuilder,Validators} from '@angular/forms';
+import { CustomValidator} from '../custom-validator';
 import * as $ from 'jquery';
 
 @Component({
@@ -15,11 +16,29 @@ export class LoginComponent implements OnInit {
 
   model:any = {};
   loginForm: FormGroup;
+  submitted= false;
+  imagePath = 'login/Images/give-money.png';
   ngOnInit() {
     this.loginForm = this.fb.group({
-      lgnEmail: ['',Validators.required],
-      lgnPassword: ['',Validators.required]
+      lgnEmail: ['',[Validators.required,CustomValidator.emailValidator]],
+      lgnPassword: ['',[Validators.required,Validators.minLength(6)]]
     })
+  }
+  get f() {return this.loginForm.controls;}
+  
+  
+  onLogin(){
+    
+    this.submitted = true;
+
+    if(this.loginForm.invalid){
+      // alert('invalid form');
+    }
+    else{
+      this.route.navigateByUrl('/dashboard');
+      alert('Success');
+    }
+    
   }
   login(){
     // $(document).ready(function(){
@@ -32,8 +51,5 @@ export class LoginComponent implements OnInit {
   //   btnLogin(){
   //     this.route.navigateByUrl('/dashboard');
   //   }
-  btnLogin(){
-    this.route.navigateByUrl('/dashboard');
-      console.log(this.loginForm.value);
-    }
+  
   }

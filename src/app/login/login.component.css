@@ -20,7 +20,7 @@ input{
 #formStyle {
     border: 0px solid !important;
     padding: 60px 50px !important;
-    margin-top: 5vh !important;
+    margin-top: -5vh !important;
     box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75) !important;
 }
 footer{
@@ -44,19 +44,22 @@ input::placeholder{
     background-repeat: no-repeat;
     background-size: contain;
 }
-
 #passwordloginIcon{
     background-image: url(Images/password.png);
     background-repeat: no-repeat;
     background-size: contain;
 }
-
 .logIn{
     background-color:#30336B !important;
     width: 100px;
     border-radius: 10px;
 }
 
+#logo{
+    width: 100px;
+    position: relative;
+    left:15%;
+}
 #divLogin{
     margin-top:20vh;
     background-color: white;

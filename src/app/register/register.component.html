@@ -16,54 +16,58 @@
             <div class="row">
                 <!-- <div class="col-md-4 col-sm-4 col-xs-12"></div> -->
                 <div class="col-md-12 col-sm-4 col-xs-12" style="left:20%">
+                        <img src="../../assets/Images/give-money.png" alt="Cant Display Image" id="logo"/>
                     <!-- Form Start Here -->
                     <form class="form-container" id="frmRegister" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+                        <div id="logo"></div>
                         <label style="font-size: 18px;
                         color:#30336B;
                         font-weight: 700;">Be a part of Biggest Chain !!</label>
-                        <div class="form-group" [ngClass]="{'has-error': registerForm.get('regName').errors && (registerForm.get('regName').touched || (registerForm.get('regName').dirty))}">
+                        <div class="form-group">
                             <input type="text" style="text-indent:25px;" formControlName="regName"
+                            [ngClass]="{ 'is-invalid': submitted && f.regName.errors }"
                              class="form-control" id="userRegIcon" name="User" placeholder="Name" > 
-                             <span class="help-block" style="color: red; " *ngIf="registerForm.get('regName').errors && (registerForm.get('regName').touched || (registerForm.get('regName').dirty))">
-                                <span *ngIf="registerForm.get('regName').errors.required">
-                                    Name Is Required!
-                                </span>
-                            </span>
+                             <div *ngIf="submitted && f.regName.errors" class="invalid-feedback">
+                                <div *ngIf="f.regName.errors.required">User Name is required</div>
+                                <div *ngIf="f.regName.errors.invalidNumber">No WhiteSpaces are allowed</div>
+                            </div>
                         </div>
-                        <div class="form-group" [ngClass]="{'has-error': registerForm.get('regMobileNo').errors && (registerForm.get('regMobileNo').touched || (registerForm.get('regMobileNo').dirty))}">
-                            <input type="text" style="text-indent:25px;" class="form-control" id="moblieRegIcon" name="MobileNo" placeholder="Mobile Number" formControlName="regMobileNo">
-                            <span class="help-block" style="color: red; " *ngIf="registerForm.get('regMobileNo').errors && (registerForm.get('regMobileNo').touched || (registerForm.get('regMobileNo').dirty))">
-                                <span *ngIf="registerForm.get('regMobileNo').errors.required">
-                                    Mobile Number Is Required!
-                                </span>
-                            </span>
+                        <div class="form-group">
+                            <input type="text" style="text-indent:25px;" class="form-control" id="moblieRegIcon"
+                            [ngClass]="{ 'is-invalid': submitted && f.regMobileNo.errors }" name="MobileNo" placeholder="Mobile Number" formControlName="regMobileNo">
+                            <div *ngIf="submitted && f.regMobileNo.errors" class="invalid-feedback">
+                                <div *ngIf="f.regMobileNo.errors.required">Mobile Number is required</div>
+                                <div *ngIf="f.regMobileNo.errors?.maxlength">Length is 10</div>
+                                <div *ngIf="f.regMobileNo.errors?.minlength">Length is 10</div>
+                                 <div *ngIf="f.regMobileNo.errors.invalidNumber">Only numbers</div>
+                            </div>
                         </div>
-                        <div class="form-group" [ngClass]="{'has-error': registerForm.get('regEmail').errors && (registerForm.get('regEmail').touched || (registerForm.get('regEmail').dirty))}">
-                            <input type="text" style="text-indent:25px;" class="form-control" id="emailRegIcon" name="EmailId" placeholder="Email Id" formControlName="regEmail">
-                            <span class="help-block" style="color: red; " *ngIf="registerForm.get('regEmail').errors && (registerForm.get('regEmail').touched || (registerForm.get('regEmail').dirty))">
-                                <span *ngIf="registerForm.get('regEmail').errors.required">
-                                    Email Is Required!
-                                </span>
-                            </span>
+                        <div class="form-group">
+                            <input type="text" style="text-indent:25px;" class="form-control" id="emailRegIcon"
+                            [ngClass]="{ 'is-invalid': submitted && f.regEmail.errors }" name="EmailId" placeholder="Email Id" formControlName="regEmail">
+                            <div *ngIf="submitted && f.regEmail.errors" class="invalid-feedback">
+                                <div *ngIf="f.regEmail.errors.required">Email is required</div>
+                                <div *ngIf="f.regEmail.errors.invalidNumber">Enter a Valid Email</div>
+                            </div>
                         </div>
-                        <div class="form-group" [ngClass]="{'has-error': registerForm.get('regRefId').errors && (registerForm.get('regRefId').touched || (registerForm.get('regRefId').dirty))}">
-                            <input type="text" style="text-indent:25px;" class="form-control" id="refRegIcon" name="RefId" placeholder="Reference Id" formControlName="regRefId">
-                            <span class="help-block" style="color: red; " *ngIf="registerForm.get('regRefId').errors && (registerForm.get('regRefId').touched || (registerForm.get('regRefId').dirty))">
-                                <span *ngIf="registerForm.get('regRefId').errors.required">
-                                    Reference Id Is Required!
-                                </span>
-                            </span>
+                        <div class="form-group">
+                            <input type="text" style="text-indent:25px;" class="form-control" id="refRegIcon"
+                            [ngClass]="{ 'is-invalid': submitted && f.regRefId.errors }" name="RefId" placeholder="Reference Id" formControlName="regRefId">
+                            <div *ngIf="submitted && f.regRefId.errors" class="invalid-feedback">
+                                <div *ngIf="f.regRefId.errors.required">Reference Id is required</div>
+                                <div *ngIf="f.regRefId.errors.invalidNumber">Only Numbers</div>
+                            </div>
                         </div>
-                        <div class="form-group" [ngClass]="{'has-error': registerForm.get('regPassword').errors && (registerForm.get('regPassword').touched || (registerForm.get('regPassword').dirty))}">
-                            <input type="password" style="text-indent:25px;" class="form-control" id="passwordRegIcon" name="Password" placeholder="Password" formControlName="regPassword">
-                            <span class="help-block" style="color: red; " *ngIf="registerForm.get('regPassword').errors && (registerForm.get('regPassword').touched || (registerForm.get('regPassword').dirty))">
-                                <span *ngIf="registerForm.get('regPassword').errors.required">
-                                    Password Is Required!
-                                </span>
-                            </span>
+                        <div class="form-group">
+                            <input type="password" style="text-indent:25px;" class="form-control" id="passwordRegIcon" 
+                            [ngClass]="{ 'is-invalid': submitted && f.regPassword.errors }"name="Password" placeholder="Password" formControlName="regPassword">
+                            <div *ngIf="submitted && f.regPassword.errors" class="invalid-feedback">
+                                <div *ngIf="f.regPassword.errors.required">Password is required</div>
+                                <div *ngIf="f.regPassword.errors?.minlength">Password must be at least 6 characters</div>
+                            </div>
                         </div>
                         <div class="form-group">  
-                            <button type="button" class="btn btn-primary register" (click)="btnRegister();">Register</button>  
+                            <button type="submit" class="btn btn-primary register">Register</button>  
                         </div>
                         <button type="button" class="btn btn-link create" (click)="login()">Already Registered? Log In Here</button>
                     </form>

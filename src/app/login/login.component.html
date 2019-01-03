@@ -18,33 +18,33 @@
         <div class="row">
             <!-- <div class="col-md-4 col-sm-4 col-xs-12"></div> -->
             <div class="col-md-12 col-sm-4 col-xs-12" style="left:20%">
+                    <img src="../../assets/Images/give-money.png" alt="Cant Display Image" id="logo"/>
                 <!-- Form Start Here -->
-                <form class="form-container" id="frmLogin" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                <form class="form-container" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                       
                     <label style="font-size: 18px;
                     color:#30336B;
                     font-weight: 700;">Welcome Back !!</label>
-                    <div class="form-group" [ngClass]="{'has-error' : loginForm.get('lgnEmail').errors && (loginForm.get('lgnEmail').touched || (loginForm.get('lgnEmail').dirty))}">
+                    <div class="form-group">
                         <input type="text" style="text-indent:25px;"
-                        formControlName="lgnEmail"
+                        formControlName="lgnEmail"  [ngClass]="{ 'is-invalid': submitted && f.lgnEmail.errors }"
                         class="form-control" id="emailloginIcon" name="EmailId" placeholder="Email Id">
-                        <span class="help-block" style="color: red; " *ngIf="loginForm.get('lgnEmail').errors && (loginForm.get('lgnEmail').touched || (loginForm.get('lgnEmail').dirty))">
-                            <span *ngIf="loginForm.get('lgnEmail').errors.required">
-                                Email Is Required!
-                            </span>
-                        </span>
+                        <div *ngIf="submitted && f.lgnEmail.errors" class="invalid-feedback">
+                            <div *ngIf="f.lgnEmail.errors.required">Email is required</div>
+                            <div *ngIf="f.lgnEmail.errors.invalidNumber">Enter a Valid Email</div>
+                        </div>
                     </div>
-                    <div class="form-group" [ngClass]="{'has-error' : loginForm.get('lgnPassword').errors && (loginForm.get('lgnPassword').touched || (loginForm.get('lgnPassword').dirty))}">
+                    <div class="form-group">
                             <input type="password" style="text-indent:25px;" 
-                            formControlName="lgnPassword"
+                            formControlName="lgnPassword" [ngClass]="{ 'is-invalid': submitted && f.lgnPassword.errors }"
                             class="form-control" id="passwordloginIcon" name="Password" placeholder="Password">
-                            <span class="help-block" style="color: red; " *ngIf="loginForm.get('lgnPassword').errors && (loginForm.get('lgnPassword').touched || (loginForm.get('lgnPassword').dirty))">
-                                <span *ngIf="loginForm.get('lgnPassword').errors.required">
-                                    Password Is Required!
-                                </span>
-                            </span>
+                            <div *ngIf="submitted && f.lgnPassword.errors" class="invalid-feedback">
+                                <div *ngIf="f.lgnPassword.errors.required">Password is required</div>
+                                <div *ngIf="f.lgnPassword.errors?.minlength">Password must be at least 6 characters</div>
+                            </div>
                     </div>
                     <div class="form-group">  
-                        <button type="button" class="btn btn-primary logIn" (click)="btnLogin()">Log In</button>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#30336B">Forgot Password?</span>  
+                        <button type="submit" class="btn btn-primary logIn">Log In</button>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#30336B">Forgot Password?</span>  
                     </div>
                     <button type="button" class="btn btn-link create" (click)="login()">Create A New Account Here</button>
                 </form>
