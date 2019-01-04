@@ -50,6 +50,25 @@ export class RegisterComponent implements OnInit {
       
     }
     
-    
+    //On enter Submit form
+  keyDownFunction(event) {
+    if(event.keyCode == 13) {
+      this.submitted = true;
+      if(this.registerForm.invalid){
+        //alert('invalid form');
+      }
+      else{
+         
+          var retVal = prompt("Enter OTP : ", "");
+          if(retVal != null)
+          {
+            this.route.navigateByUrl('/dashboard');
+          }
+          else{
+            this.route.navigateByUrl('/register');
+          }
+        }
+  }
+}
     
 }

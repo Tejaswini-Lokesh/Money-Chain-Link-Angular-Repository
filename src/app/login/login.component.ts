@@ -26,30 +26,37 @@ export class LoginComponent implements OnInit {
   }
   get f() {return this.loginForm.controls;}
   
-  
+  //On click of Login Button submit & Validate form
   onLogin(){
     
     this.submitted = true;
 
     if(this.loginForm.invalid){
-      // alert('invalid form');
     }
     else{
       this.route.navigateByUrl('/dashboard');
-      alert('Success');
+     // alert('Success');
     }
     
   }
+  
+  //On enter Submit form
+  keyDownFunction(event) {
+    if(event.keyCode == 13) {
+     // alert('you just clicked enter');
+      this.submitted = true;
+
+    if(this.loginForm.invalid){
+    }
+    else{
+      this.route.navigateByUrl('/dashboard');
+      //alert('Success');
+    }
+    }
+  }
   login(){
-    // $(document).ready(function(){
-    //   var name = "tejaswini";
-    //   console.log(name);
-    //   alert(name);
-    // })
       this.route.navigateByUrl('/register');
     }
-  //   btnLogin(){
-  //     this.route.navigateByUrl('/dashboard');
-  //   }
+ 
   
   }
